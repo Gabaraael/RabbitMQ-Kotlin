@@ -25,7 +25,7 @@ class CepService(@Autowired private var cepRepository:CepRepository, @Autowired 
             .retrieve()
             .bodyToMono(CepDTO::class.java)
 
-
+        println("test")
         var cepDTO : CepDTO? = cepMono.block()
         return cepDTO
 
