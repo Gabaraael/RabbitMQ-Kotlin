@@ -17,12 +17,10 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/api")
 class CepController (@Autowired private var cepService: CepService){
 
-
    @GetMapping(path = ["/cep"])
    @Cacheable("cep")
     fun findByCep(@RequestParam cep: String): ResponseEntity<Any> {
         return try {
-            println("Entrei na controller")
             ResponseEntity.ok().body(cepService.findByCep(cep))
         } catch (e: Exception) {
             ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.message)

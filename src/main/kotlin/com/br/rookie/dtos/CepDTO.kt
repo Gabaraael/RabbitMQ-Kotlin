@@ -1,5 +1,4 @@
 package com.br.rookie.dtos
-
 data class CepDTO(
     var cep: String?,
     var logradouro: String?,
@@ -10,11 +9,16 @@ data class CepDTO(
     var gia: String?,
     var ddd: String?,
     var siafi: String?
-) {
+)
+{
+
+    fun CepDTO(){
+
+    }
+
 
 
 }
-
 
 
 
