@@ -5,10 +5,9 @@ import com.br.rookie.dtos.CepDTO
 import com.br.rookie.entity.CepEntity
 import com.br.rookie.repository.CepRepository
 import com.fasterxml.jackson.databind.ObjectMapper
-import net.minidev.json.JSONArray
+import com.google.gson.JsonObject
 import org.springframework.amqp.rabbit.annotation.RabbitListener
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.json.GsonJsonParser
 import org.springframework.http.HttpMethod
 import org.springframework.stereotype.Service
 import org.springframework.web.reactive.function.client.WebClient
@@ -58,8 +57,14 @@ class CepService(
     @RabbitListener(queues = [RabbitMQConst.FILA_CEP])
     fun consumer(message: String){
         println(message)
-        //var objectMapper: ObjectMapper = ObjectMapper()
-        //objectMapper.readValue(message, CepDTO::class.java)
+        try {
+            this.cepRepository.save(ObjectMapper().readValue(message, CepEntity::class.java))
+        }catch (exception : Exception){
+            println(exception)
+            println("FAIL")
+        }
+
+
 
 
 
@@ -71,7 +76,6 @@ class CepService(
 
 
 
-
-    }
+}
 
 

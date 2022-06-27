@@ -1,20 +1,21 @@
 package com.br.rookie.dtos
+
+import com.fasterxml.jackson.annotation.JsonCreator
+
 data class CepDTO(
-    var cep: String?,
-    var logradouro: String?,
-    var complemento: String?,
-    var localidade: String?,
-    var uf: String?,
-    var ibge: String?,
-    var gia: String?,
-    var ddd: String?,
-    var siafi: String?
-)
+    var cep: String? = null,
+    var logradouro: String? = null,
+    var complemento: String? = null,
+    var localidade: String? = null,
+    var uf: String? = null,
+    var ibge: String? = null,
+    var gia: String? = null,
+    var ddd: String? = null,
+    var siafi: String? = null
+): java.io.Serializable
 {
 
-    fun CepDTO(){
 
-    }
 
 
 
